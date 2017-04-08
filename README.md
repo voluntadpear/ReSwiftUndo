@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.org/voluntadpear/ReSwiftUndo.svg?branch=master&style=flat-square)](https://travis-ci.org/voluntadpear/ReSwiftUndo)
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage) 
 [![](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/voluntadpear/ReSwiftUndo/blob/master/LICENSE)
 
