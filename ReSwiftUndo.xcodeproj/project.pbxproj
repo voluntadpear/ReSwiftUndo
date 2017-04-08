@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		990621221E9940DB00B15506 /* ReSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 990621211E9940DB00B15506 /* ReSwift.framework */; };
+		990621241E9940F500B15506 /* Quick.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 990621231E9940F500B15506 /* Quick.framework */; };
+		990621261E9940F900B15506 /* Nimble.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 990621251E9940F900B15506 /* Nimble.framework */; };
 		992038231E993CE300321E79 /* ReSwiftUndo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 992038191E993CE300321E79 /* ReSwiftUndo.framework */; };
 		992038281E993CE300321E79 /* ReSwiftUndoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 992038271E993CE300321E79 /* ReSwiftUndoTests.swift */; };
 		9920382A1E993CE300321E79 /* ReSwiftUndo.h in Headers */ = {isa = PBXBuildFile; fileRef = 9920381C1E993CE300321E79 /* ReSwiftUndo.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -23,6 +26,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		9906211F1E9940D000B15506 /* Nimble.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Nimble.framework; path = "Carthage/Checkouts/Nimble/build/Debug-iphoneos/Nimble.framework"; sourceTree = "<group>"; };
+		990621211E9940DB00B15506 /* ReSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReSwift.framework; path = "Carthage/Checkouts/ReSwift/build/Debug-iphoneos/ReSwift.framework"; sourceTree = "<group>"; };
+		990621231E9940F500B15506 /* Quick.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quick.framework; path = "Carthage/Checkouts/Quick/build/Debug-iphoneos/Quick.framework"; sourceTree = "<group>"; };
+		990621251E9940F900B15506 /* Nimble.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Nimble.framework; path = "Carthage/Checkouts/Nimble/build/Debug-iphoneos/Nimble.framework"; sourceTree = "<group>"; };
 		992038191E993CE300321E79 /* ReSwiftUndo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ReSwiftUndo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9920381C1E993CE300321E79 /* ReSwiftUndo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ReSwiftUndo.h; sourceTree = "<group>"; };
 		9920381D1E993CE300321E79 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -36,6 +43,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				990621221E9940DB00B15506 /* ReSwift.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -43,6 +51,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				990621261E9940F900B15506 /* Nimble.framework in Frameworks */,
+				990621241E9940F500B15506 /* Quick.framework in Frameworks */,
 				992038231E993CE300321E79 /* ReSwiftUndo.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -50,12 +60,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9906211E1E9940D000B15506 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				990621251E9940F900B15506 /* Nimble.framework */,
+				990621231E9940F500B15506 /* Quick.framework */,
+				990621211E9940DB00B15506 /* ReSwift.framework */,
+				9906211F1E9940D000B15506 /* Nimble.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		9920380F1E993CE300321E79 = {
 			isa = PBXGroup;
 			children = (
 				9920381B1E993CE300321E79 /* ReSwiftUndo */,
 				992038261E993CE300321E79 /* ReSwiftUndoTests */,
 				9920381A1E993CE300321E79 /* Products */,
+				9906211E1E9940D000B15506 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -396,6 +418,7 @@
 				9920382F1E993CE300321E79 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		992038301E993CE300321E79 /* Build configuration list for PBXNativeTarget "ReSwiftUndoTests" */ = {
 			isa = XCConfigurationList;
@@ -404,6 +427,7 @@
 				992038321E993CE300321E79 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
