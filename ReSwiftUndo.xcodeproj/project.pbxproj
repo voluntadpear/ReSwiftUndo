@@ -10,6 +10,7 @@
 		990621221E9940DB00B15506 /* ReSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 990621211E9940DB00B15506 /* ReSwift.framework */; };
 		990621241E9940F500B15506 /* Quick.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 990621231E9940F500B15506 /* Quick.framework */; };
 		990621261E9940F900B15506 /* Nimble.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 990621251E9940F900B15506 /* Nimble.framework */; };
+		990621291E99449500B15506 /* UndoReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 990621281E99449500B15506 /* UndoReducer.swift */; };
 		992038231E993CE300321E79 /* ReSwiftUndo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 992038191E993CE300321E79 /* ReSwiftUndo.framework */; };
 		992038281E993CE300321E79 /* ReSwiftUndoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 992038271E993CE300321E79 /* ReSwiftUndoTests.swift */; };
 		9920382A1E993CE300321E79 /* ReSwiftUndo.h in Headers */ = {isa = PBXBuildFile; fileRef = 9920381C1E993CE300321E79 /* ReSwiftUndo.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -30,6 +31,7 @@
 		990621211E9940DB00B15506 /* ReSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReSwift.framework; path = "Carthage/Checkouts/ReSwift/build/Debug-iphoneos/ReSwift.framework"; sourceTree = "<group>"; };
 		990621231E9940F500B15506 /* Quick.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quick.framework; path = "Carthage/Checkouts/Quick/build/Debug-iphoneos/Quick.framework"; sourceTree = "<group>"; };
 		990621251E9940F900B15506 /* Nimble.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Nimble.framework; path = "Carthage/Checkouts/Nimble/build/Debug-iphoneos/Nimble.framework"; sourceTree = "<group>"; };
+		990621281E99449500B15506 /* UndoReducer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UndoReducer.swift; sourceTree = "<group>"; };
 		992038191E993CE300321E79 /* ReSwiftUndo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ReSwiftUndo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9920381C1E993CE300321E79 /* ReSwiftUndo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ReSwiftUndo.h; sourceTree = "<group>"; };
 		9920381D1E993CE300321E79 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -51,9 +53,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				992038231E993CE300321E79 /* ReSwiftUndo.framework in Frameworks */,
 				990621261E9940F900B15506 /* Nimble.framework in Frameworks */,
 				990621241E9940F500B15506 /* Quick.framework in Frameworks */,
-				992038231E993CE300321E79 /* ReSwiftUndo.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -95,6 +97,7 @@
 			children = (
 				9920381C1E993CE300321E79 /* ReSwiftUndo.h */,
 				9920381D1E993CE300321E79 /* Info.plist */,
+				990621281E99449500B15506 /* UndoReducer.swift */,
 			);
 			path = ReSwiftUndo;
 			sourceTree = "<group>";
@@ -170,6 +173,7 @@
 				TargetAttributes = {
 					992038181E993CE300321E79 = {
 						CreatedOnToolsVersion = 8.3;
+						LastSwiftMigration = 0830;
 						ProvisioningStyle = Automatic;
 					};
 					992038211E993CE300321E79 = {
@@ -218,6 +222,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				990621291E99449500B15506 /* UndoReducer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -344,6 +349,7 @@
 		9920382E1E993CE300321E79 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -355,6 +361,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = voluntadpear.ReSwiftUndo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -362,6 +369,7 @@
 		9920382F1E993CE300321E79 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -380,6 +388,7 @@
 		992038311E993CE300321E79 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				INFOPLIST_FILE = ReSwiftUndoTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = voluntadpear.ReSwiftUndoTests;
@@ -391,6 +400,7 @@
 		992038321E993CE300321E79 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				INFOPLIST_FILE = ReSwiftUndoTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = voluntadpear.ReSwiftUndoTests;
