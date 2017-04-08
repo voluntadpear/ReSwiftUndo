@@ -1,0 +1,4 @@
+#!/bin/bash
+# ./test script
+set -e #stop when a test fails
+xcodebuild test -scheme ReSwiftUndo-iOS -destination "platform=iOS Simulator,name=iPhone 6,OS=10.3

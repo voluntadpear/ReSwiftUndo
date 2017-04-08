@@ -9,10 +9,10 @@
 import Foundation
 import ReSwift
 
-struct UndoableState<T> {
-    var past: [T]
-    var present: T
-    var future: [T]
+public struct UndoableState<T>: StateType {
+    public var past: [T]
+    public var present: T
+    public var future: [T]
 }
 
 // We create a ReducerType typealias because as ReSwift 3.0.0 Reducer is not a function typealias yet
@@ -22,7 +22,7 @@ public typealias ReducerType<ReducerStateType> =
     (_ action: Action, _ state: ReducerStateType?) -> ReducerStateType
 
 
-func undoable<T: Equatable>(reducer: @escaping ReducerType<T>) -> (ReducerType<UndoableState<T>>)   {
+public func undoable<T: Equatable>(reducer: @escaping ReducerType<T>) -> (ReducerType<UndoableState<T>>)   {
     let initialState = UndoableState<T>(past: [], present: reducer(DummyAction(), nil), future: [])
 
     return { (action: Action, state: UndoableState<T>?) in
@@ -58,5 +58,5 @@ func undoable<T: Equatable>(reducer: @escaping ReducerType<T>) -> (ReducerType<U
 }
 
 struct DummyAction: Action {}
-struct Undo: Action {}
-struct Redo: Action {}
+public struct Undo: Action { public init() {} }
+public struct Redo: Action { public init() {} }
