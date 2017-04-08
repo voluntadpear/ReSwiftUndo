@@ -80,3 +80,13 @@ store.dispatch(Redo())
 print(store.state.present.counter) // 1
 ```
 
+## Install
+
+### CocoaPods
+
+Add to your `Podfile`:
+```
+pod 'ReSwiftUndo'
+```
+
+Run `pod install`
