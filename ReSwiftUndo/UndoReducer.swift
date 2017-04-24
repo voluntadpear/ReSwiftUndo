@@ -22,7 +22,7 @@ public struct UndoableState<T>: StateType {
 }
 
 public func undoable<T: Equatable>(reducer: @escaping Reducer<T>,
-                     filterCondition: ((Action, T, UndoableState<T>) -> Bool)? = nil) -> Reducer<UndoableState<T>>   {
+                     filter: ((Action, T, UndoableState<T>) -> Bool)? = nil) -> Reducer<UndoableState<T>>   {
     let initialState = UndoableState<T>(past: [], present: reducer(DummyAction(), nil), future: [])
 
     return { (action: Action, state: UndoableState<T>?) in
@@ -53,7 +53,7 @@ public func undoable<T: Equatable>(reducer: @escaping Reducer<T>,
             }
             state.present = newPresent
 
-            if(filterCondition != nil && !filterCondition!(action, newPresent, state)) {
+            if(filter != nil && !filter!(action, newPresent, state)) {
                 //If filtering an action, merely update the present
                 return state
             } else  {

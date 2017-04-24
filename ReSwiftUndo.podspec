@@ -1,6 +1,6 @@
 Pod::Spec.new do |spec|
   spec.name = "ReSwiftUndo"
-  spec.version = "0.1.1"
+  spec.version = "0.1.2"
   spec.summary = "Swift implementation of redux-undo for use with ReSwift"
   spec.homepage = "https://github.com/voluntadpear/ReSwiftUndo"
   spec.license = { type: 'MIT', file: 'LICENSE' }
