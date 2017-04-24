@@ -81,7 +81,7 @@ print(store.state.present.counter) // 1
 ```
 
 ### Filtering actions
-If you don't want to include every action in the undo/redo history, you can
+Notice that only actions resulting in a new state are recorded. But if you want to discard some actions in the undo/redo history, or to only record history if a certain part of the state is changed you can
 add a `filter` function to `undoable`. 
 
 If you want to create your own filter, pass in a function or closure with the parameters of type 
