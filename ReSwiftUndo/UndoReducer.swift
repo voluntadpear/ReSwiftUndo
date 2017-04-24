@@ -13,6 +13,12 @@ public struct UndoableState<T>: StateType {
     public var past: [T]
     public var present: T
     public var future: [T]
+
+    public init(past: [T], present: T, future: [T]) {
+        self.past = past
+        self.present = present
+        self.future = future
+    }
 }
 
 public func undoable<T: Equatable>(reducer: @escaping Reducer<T>,
