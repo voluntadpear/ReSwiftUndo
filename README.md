@@ -36,12 +36,6 @@ func reducer(action: Action, state: State?) -> State {
     }
     return state
 }
-
-struct AppReducer: Reducer {
-  func handleAction(action: Action, state: State?) -> State {
-        return reducer(action, state)
-    }
-}
 ```
 With ReSwiftUndo you can trigger actions that lets you go back to your previous state and back to the recent one.
 
