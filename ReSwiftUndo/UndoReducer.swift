@@ -15,7 +15,8 @@ public struct UndoableState<T>: StateType {
     public var future: [T]
 }
 
-public func undoable<T: Equatable>(reducer: @escaping Reducer<T>) -> Reducer<UndoableState<T>>   {
+public func undoable<T: Equatable>(reducer: @escaping Reducer<T>,
+                     filterCondition: ((Action, T, UndoableState<T>) -> Bool)? = nil) -> Reducer<UndoableState<T>>   {
     let initialState = UndoableState<T>(past: [], present: reducer(DummyAction(), nil), future: [])
 
     return { (action: Action, state: UndoableState<T>?) in
@@ -40,9 +41,18 @@ public func undoable<T: Equatable>(reducer: @escaping Reducer<T>) -> Reducer<Und
         default:
             let previousArray = [state.present] + state.past
             let newPresent = reducer(action, state.present)
-            if newPresent != state.present {
+            if newPresent == state.present {
+                //Don't handle this action
+                return state
+            }
+            state.present = newPresent
+
+            if(filterCondition != nil && !filterCondition!(action, newPresent, state)) {
+                //If filtering an action, merely update the present
+                return state
+            } else  {
+                //If the action wasn't filtered, insert normally
                 state.past = previousArray
-                state.present = newPresent
                 state.future = []
             }
         }
