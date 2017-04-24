@@ -36,11 +36,7 @@ func reducer(action: Action, state: State?) -> State {
     return state
 }
 
-struct AppReducer: Reducer {
-    func handleAction(action: Action, state: UndoableState<State>?) -> UndoableState<State> {
-        return undoable(reducer: reducer)(action, state)
-    }
-}
+let appReducer = undoable(reducer: reducer)
 
 func initialState() -> State {
     return State(counter: 0)
@@ -51,7 +47,7 @@ var store: Store<UndoableState<State>>!
 class ReSwiftUndoTests: QuickSpec {
     override func spec() {
         beforeEach {
-            store = Store<UndoableState<State>>(reducer: AppReducer(), state: nil)
+            store = Store<UndoableState<State>>(reducer: appReducer, state: nil)
         }
         describe("ReSwiftUndo") {
             it("goes to the past") {

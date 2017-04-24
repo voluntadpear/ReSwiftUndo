@@ -15,14 +15,7 @@ public struct UndoableState<T>: StateType {
     public var future: [T]
 }
 
-// We create a ReducerType typealias because as ReSwift 3.0.0 Reducer is not a function typealias yet
-// that changes on ReSwift 4.0.0
-
-public typealias ReducerType<ReducerStateType> =
-    (_ action: Action, _ state: ReducerStateType?) -> ReducerStateType
-
-
-public func undoable<T: Equatable>(reducer: @escaping ReducerType<T>) -> (ReducerType<UndoableState<T>>)   {
+public func undoable<T: Equatable>(reducer: @escaping Reducer<T>) -> Reducer<UndoableState<T>>   {
     let initialState = UndoableState<T>(past: [], present: reducer(DummyAction(), nil), future: [])
 
     return { (action: Action, state: UndoableState<T>?) in

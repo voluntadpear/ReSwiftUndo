@@ -7,7 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		990621221E9940DB00B15506 /* ReSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 990621211E9940DB00B15506 /* ReSwift.framework */; };
+		990311541EADC1260012A162 /* ReSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 990311501EADC1260012A162 /* ReSwift.framework */; };
+		990311551EADC1260012A162 /* ReSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 990311511EADC1260012A162 /* ReSwift.framework */; };
+		990311561EADC1260012A162 /* ReSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 990311521EADC1260012A162 /* ReSwift.framework */; };
+		990311571EADC1260012A162 /* ReSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 990311531EADC1260012A162 /* ReSwift.framework */; };
 		990621241E9940F500B15506 /* Quick.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 990621231E9940F500B15506 /* Quick.framework */; };
 		990621261E9940F900B15506 /* Nimble.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 990621251E9940F900B15506 /* Nimble.framework */; };
 		990621291E99449500B15506 /* UndoReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 990621281E99449500B15506 /* UndoReducer.swift */; };
@@ -27,6 +30,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		990311501EADC1260012A162 /* ReSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReSwift.framework; path = "Carthage/Checkouts/ReSwift/build/Debug-iphoneos/ReSwift.framework"; sourceTree = "<group>"; };
+		990311511EADC1260012A162 /* ReSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReSwift.framework; path = "Carthage/Checkouts/ReSwift/build/Debug-watchos/ReSwift.framework"; sourceTree = "<group>"; };
+		990311521EADC1260012A162 /* ReSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReSwift.framework; path = "Carthage/Checkouts/ReSwift/build/Debug-appletvos/ReSwift.framework"; sourceTree = "<group>"; };
+		990311531EADC1260012A162 /* ReSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReSwift.framework; path = Carthage/Checkouts/ReSwift/build/Debug/ReSwift.framework; sourceTree = "<group>"; };
 		9906211F1E9940D000B15506 /* Nimble.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Nimble.framework; path = "Carthage/Checkouts/Nimble/build/Debug-iphoneos/Nimble.framework"; sourceTree = "<group>"; };
 		990621211E9940DB00B15506 /* ReSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReSwift.framework; path = "Carthage/Checkouts/ReSwift/build/Debug-iphoneos/ReSwift.framework"; sourceTree = "<group>"; };
 		990621231E9940F500B15506 /* Quick.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quick.framework; path = "Carthage/Checkouts/Quick/build/Debug-iphoneos/Quick.framework"; sourceTree = "<group>"; };
@@ -45,7 +52,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				990621221E9940DB00B15506 /* ReSwift.framework in Frameworks */,
+				990311541EADC1260012A162 /* ReSwift.framework in Frameworks */,
+				990311551EADC1260012A162 /* ReSwift.framework in Frameworks */,
+				990311561EADC1260012A162 /* ReSwift.framework in Frameworks */,
+				990311571EADC1260012A162 /* ReSwift.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -65,6 +75,10 @@
 		9906211E1E9940D000B15506 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				990311501EADC1260012A162 /* ReSwift.framework */,
+				990311511EADC1260012A162 /* ReSwift.framework */,
+				990311521EADC1260012A162 /* ReSwift.framework */,
+				990311531EADC1260012A162 /* ReSwift.framework */,
 				990621251E9940F900B15506 /* Nimble.framework */,
 				990621231E9940F500B15506 /* Quick.framework */,
 				990621211E9940DB00B15506 /* ReSwift.framework */,
@@ -349,12 +363,20 @@
 		9920382E1E993CE300321E79 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Checkouts/ReSwift/build/Debug-iphoneos",
+					"$(PROJECT_DIR)/Carthage/Checkouts/ReSwift/build/Debug-watchos",
+					"$(PROJECT_DIR)/Carthage/Checkouts/ReSwift/build/Debug-appletvos",
+					"$(PROJECT_DIR)/Carthage/Checkouts/ReSwift/build/Debug",
+				);
 				INFOPLIST_FILE = ReSwiftUndo/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -369,12 +391,20 @@
 		9920382F1E993CE300321E79 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Checkouts/ReSwift/build/Debug-iphoneos",
+					"$(PROJECT_DIR)/Carthage/Checkouts/ReSwift/build/Debug-watchos",
+					"$(PROJECT_DIR)/Carthage/Checkouts/ReSwift/build/Debug-appletvos",
+					"$(PROJECT_DIR)/Carthage/Checkouts/ReSwift/build/Debug",
+				);
 				INFOPLIST_FILE = ReSwiftUndo/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
