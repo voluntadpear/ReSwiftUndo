@@ -51,16 +51,13 @@ public func undoable<T: Equatable>(reducer: @escaping Reducer<T>,
                 //Don't handle this action
                 return state
             }
-            state.present = newPresent
 
-            if(filter != nil && !filter!(action, newPresent, state)) {
-                //If filtering an action, merely update the present
-                return state
-            } else  {
-                //If the action wasn't filtered, insert normally
+            if(filter == nil || (filter != nil && filter!(action, newPresent, state))) {
+                // If the action wasn't filtered, insert normally
                 state.past = previousArray
                 state.future = []
-            }
+            } // else do nothing
+            state.present = newPresent
         }
         return state
     }
