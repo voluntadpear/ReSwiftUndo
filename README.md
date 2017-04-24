@@ -3,7 +3,7 @@
 [![](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/voluntadpear/ReSwiftUndo/blob/master/LICENSE)
 
 # ReSwiftUndo
-Swift implementation of [redux-undo](https://github.com/omnidan/redux-undo) for Swift to use with [ReSwift](https://github.com/ReSwift/ReSwift)
+Swift implementation of [redux-undo](https://github.com/omnidan/redux-undo) for Swift to use with [ReSwift](https://github.com/ReSwift/ReSwift) 4.0
 
 ***Work in progress***
 
@@ -80,6 +80,22 @@ store.dispatch(Redo())
 print(store.state.present.counter) // 1
 ```
 
+### Filtering actions
+If you don't want to include every action in the undo/redo history, you can
+add a `filter` function to `undoable`. 
+
+If you want to create your own filter, pass in a function or closure with the parameters of type 
+`(Action, FoldersState, UndoableState<FoldersState>)` where you receive the action dispatched, the new currentState and the previous history. For example:
+
+```swift
+let filterCondition: (Action, FoldersState, UndoableState<FoldersState>) -> Bool = { (_, new, previous) in
+            let previousPresent = previous.present
+            let sameFolder = previousPresent.folder?.itemId == new.folder?.itemId
+            return !sameFolder
+        }
+        
+let folderUndoableReducer: (Action, UndoableState<FoldersState>?) -> UndoableState<FoldersState> = undoable(reducer: foldersReducer, filter: filterCondition)
+```
 ## Install
 
 ### CocoaPods
