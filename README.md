@@ -57,13 +57,22 @@ public struct UndoableState<T>: StateType {
 Now you can get the current state like this: `state.present`
 
 ```swift
-struct AppReducer: Reducer {
-    func handleAction(action: Action, state: UndoableState<State>?) -> UndoableState<State> {
-        return undoable(reducer: reducer)(action, state)
-    }
-}
+let appReducer = undoable(reducer: reducer)
 
-var store = Store<UndoableState<State>>(reducer: AppReducer(), state: nil)
+var store = Store<UndoableState<State>>(reducer: appReducer, state: nil)
+```
+
+If you only need a substate of your app to be undoable you can do something like this:
+```swift
+func appReducer(action: Action, state: State?) -> State {
+    let folderUndoableReducer = undoable(reducer: foldersReducer, filter: filterCondition)
+    return State(
+            authenticationState: authenticationReducer(action: action, state: state?.authenticationState),
+            commonState: commonReducer(action: action, state: state?.commonState),
+            foldersState: folderUndoableReducer(action, state?.foldersState),
+            profileViewState: profileViewReducer(action: action, state: state?.profileViewState)
+        )
+}
 ```
 
 You can now trigger the `Undo` and `Redo` actions and do things like these:
