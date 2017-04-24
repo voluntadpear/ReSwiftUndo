@@ -94,7 +94,8 @@ let filterCondition: (Action, FoldersState, UndoableState<FoldersState>) -> Bool
             return !sameFolder
         }
         
-let folderUndoableReducer: (Action, UndoableState<FoldersState>?) -> UndoableState<FoldersState> = undoable(reducer: foldersReducer, filter: filterCondition)
+let folderUndoableReducer: (Action, UndoableState<FoldersState>?) -> UndoableState<FoldersState> = 
+undoable(reducer: foldersReducer, filter: filterCondition)
 ```
 ## Install
 
