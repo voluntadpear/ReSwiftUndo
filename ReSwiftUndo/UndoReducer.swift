@@ -21,8 +21,10 @@ public struct UndoableState<T>: StateType {
     }
 }
 
+public typealias UndoableFilter<T> = (Action, T, UndoableState<T>) -> Bool
+
 public func undoable<T: Equatable>(reducer: @escaping Reducer<T>,
-                     filter: ((Action, T, UndoableState<T>) -> Bool)? = nil) -> Reducer<UndoableState<T>>   {
+                     filter: UndoableFilter<T>? = nil) -> Reducer<UndoableState<T>>   {
     let initialState = UndoableState<T>(past: [], present: reducer(DummyAction(), nil), future: [])
 
     return { (action: Action, state: UndoableState<T>?) in
