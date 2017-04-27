@@ -63,8 +63,7 @@ func appReducer(action: Action, state: State?) -> State {
     return State(
             authenticationState: authenticationReducer(action: action, state: state?.authenticationState),
             commonState: commonReducer(action: action, state: state?.commonState),
-            foldersState: folderUndoableReducer(action, state?.foldersState),
-            profileViewState: profileViewReducer(action: action, state: state?.profileViewState)
+            foldersState: folderUndoableReducer(action, state?.foldersState)
         )
 }
 ```
@@ -88,10 +87,10 @@ Notice that only actions resulting in a new state are recorded. But if you want 
 add a `filter` function to `undoable`. 
 
 If you want to create your own filter, pass in a function or closure with the parameters of type 
-`(Action, FoldersState, UndoableState<FoldersState>)` where you receive the action dispatched, the new currentState and the previous history. For example:
+`(Action, T, UndoableState<T>)` where you receive the action dispatched, the new currentState and the previous history. For example:
 
 ```swift
-let filterCondition: (Action, FoldersState, UndoableState<FoldersState>) -> Bool = { (_, new, previous) in
+let filterCondition: UndoableFilter<FoldersState> = { (_, new, previous) in
             let previousPresent = previous.present
             let sameFolder = previousPresent.folder?.itemId == new.folder?.itemId
             return !sameFolder
