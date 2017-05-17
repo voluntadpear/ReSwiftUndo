@@ -45,7 +45,19 @@ public func undoable<T: Equatable>(reducer: @escaping Reducer<T>,
                 state.present = next
                 state.future = newFutureArray
             }
-
+        case _ as UndoAll:
+            if let oldest = state.past.last {
+                let past = state.past
+                let previousArrays = Array(state.past.dropLast())
+                state.past = []
+                let present = state.present
+                state.present = oldest
+                state.future = previousArrays + [present] + state.future
+            }
+        case _ as ClearPast:
+            state.past = []
+        case _ as ClearFuture:
+            state.future = []
         default:
             let previousArray = [state.present] + state.past
             let newPresent = reducer(action, state.present)
@@ -68,3 +80,6 @@ public func undoable<T: Equatable>(reducer: @escaping Reducer<T>,
 struct DummyAction: Action {}
 public struct Undo: Action { public init() {} }
 public struct Redo: Action { public init() {} }
+public struct UndoAll: Action { public init() {} }
+public struct ClearPast: Action { public init() {} }
+public struct ClearFuture: Action { public init() {} }

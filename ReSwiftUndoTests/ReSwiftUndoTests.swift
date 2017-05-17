@@ -185,6 +185,54 @@ class ReSwiftUndoTests: QuickSpec {
                 expect(store.state.past[2].counter).to(equal(0))
                 expect(store.state.past[2].secondaryCounter).to(equal(0))
             }
+            it("goes far in the past") {
+                expect(store.state.present.counter).to(equal(0))
+
+                store.dispatch(Increase())
+                store.dispatch(Increase())
+                store.dispatch(Increase())
+
+                expect(store.state.present.counter).to(equal(3))
+                expect(store.state.past[0].counter).to(equal(2))
+                expect(store.state.future.count).to(equal(0))
+
+                store.dispatch(Undo())
+
+                expect(store.state.present.counter).to(equal(2))
+                expect(store.state.past[0].counter).to(equal(1))
+                expect(store.state.past.count).to(equal(2))
+                expect(store.state.future.count).to(equal(1))
+
+                store.dispatch(UndoAll())
+                expect(store.state.present.counter).to(equal(0))
+                expect(store.state.past.count).to(equal(0))
+                expect(store.state.future.count).to(equal(3))
+            }
+            it("goes far in the past and clears future") {
+                expect(store.state.present.counter).to(equal(0))
+
+                store.dispatch(Increase())
+                store.dispatch(Increase())
+                store.dispatch(Increase())
+
+                expect(store.state.present.counter).to(equal(3))
+                expect(store.state.past[0].counter).to(equal(2))
+                expect(store.state.future.count).to(equal(0))
+
+                store.dispatch(Undo())
+
+                expect(store.state.present.counter).to(equal(2))
+                expect(store.state.past[0].counter).to(equal(1))
+                expect(store.state.past.count).to(equal(2))
+                expect(store.state.future.count).to(equal(1))
+
+                store.dispatch(UndoAll())
+                expect(store.state.present.counter).to(equal(0))
+                expect(store.state.past.count).to(equal(0))
+                expect(store.state.future.count).to(equal(3))
+                store.dispatch(ClearFuture())
+                expect(store.state.future.count).to(equal(0))
+            }
         }
     }
 }
